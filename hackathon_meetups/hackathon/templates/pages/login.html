@@ -1,0 +1,14 @@
+{% extends "common.html" %}
+
+{% block title %}로그인{% endblock %}
+
+{% block content %}
+<section class="centeralign">
+    <h1 class="page-title">로그인</h1>
+    <form action="{% url 'login' %}" method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">로그인</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "common.html" %}
+
+{% block title %}참가 정보 등록/수정{% endblock %}
+
+{% block content %}
+<section class="centeralign">
+    <h1 class="page-title">참가 정보 등록/수정</h1>
+    <form action="{% url 'update_application' %}" enctype="multipart/form-data" method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">등록</button>
+    </form>
+
+    {% if cancelable %}     <!--if문: cancelable이 True일 경우 즉 이전에 신청을 한 데이터가 있을 경우에만-->
+    <a href="{% url 'cancel_application' %}">   <!--참가 취소 버튼이 보이도록 하기-->
+        <button>
+            참가 취소
+        </button>
+    </a>
+    {% endif %}
+
+</section>
+{% endblock %}

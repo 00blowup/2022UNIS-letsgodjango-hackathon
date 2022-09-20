@@ -1,0 +1,25 @@
+{% extends "common.html" %}
+
+{% block title %}참가자 보기{% endblock %}
+
+{% block content %}
+<section class="centeralign">
+    <h1 class="page-title-nomargin">참가자 목록</h1>
+    <div class="row">
+
+        {% for application in applications %}   <!--for문: views.py에서 건네받은 참가신청 리스트 안의 모든 참가신청에 대하여-->
+        <div class="col-sm-3 mb-2 mt-2">
+            <div class="card">  <!--하나의 카드 안에-->
+                <img src="/media/{{ application.profile_image }}" class="card-img-top"> <!--먼저 프로필 이미지를 넣고-->
+                <div class="card-body">     <!--카드 바디 부분에는-->
+                    <h5 class="card-title">{{ application.nickname }}</h5>  <!--제목, 역할, 자기소개를 넣는다-->
+                    <p>참가팀: {{ application.job }}</p>
+                    <p class="card-text">{{ application.introduction }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}    <!--for문 끝-->
+
+    </div>
+</section>
+{% endblock %}
